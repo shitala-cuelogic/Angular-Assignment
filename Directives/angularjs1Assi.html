@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+	<title>Angular Assignment </title>
+</head>
+<!--< body data-ng-init = "arrNames = ['Dave' , 'pqr' , 'lmn' , 'opl']" >-->
+<body data-ng-init = "customers = [{name:'Jhon Smith',city:'India'},{name:'Jhon Joe',city:'Us'},{name:'Mark Joe',city:'USA'}]">
+Name:
+<input type="text" data-ng-model="name" /> 
+	<h3> Looping with ng-repeat directives</h3>
+	<ul>
+		<li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{cust.name | uppercase}} - {{cust.city | lowercase}}</li>
+	</ul>	
+<script src="app/bower_components/angular/angular.js"></script>
+</body>
+</html>

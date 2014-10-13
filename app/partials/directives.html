@@ -1,0 +1,178 @@
+	<p>In Directives <p>
+	<span ng-bind="name"></span>!
+	{{ name }}
+	<div attribute-directives></div>
+	<element-directives></element-directives>
+	<div class='class-directives'></div>
+	<!--directive:commentDirectives-->
+	<hr>
+	<p>ng-click   </p>
+	<button ng-click="count = count + 1" ng-init="count=0">
+	  Increment
+	</button>
+
+	<button ng-click="count = count - 1" ng-init="count=count">
+	  Dectrement
+	</button>
+
+	count: {{count}}
+
+	<hr>
+	<p>ng-dbclick</p>
+	<button ng-dblclick="dbcount = dbcount + 1" ng-init="dbcount=0">
+	  Increment (on double click)
+	</button>
+	count: {{dbcount}}
+
+	<hr>
+	<p>ng-class</p>
+	<p ng-class="{strike: deleted}">Using class Map Syntax Example</p>
+	<input type="checkbox" ng-model="deleted"> deleted(apply "strike" class)<br>
+
+	<p ng-class="style">Using String Syntax</p>
+	<input type="text" ng-model="style" placeholder="Type: strike(class names in css file)">
+
+	<p ng-class="[style1, style2]">Using Array Syntax</p>
+	<input ng-model="style1" placeholder="Type: strike(class names in css file)"><br />
+	<input ng-model="style2" placeholder="Type: strike(class names in css file)"><br />
+	<input ng-model="style3" placeholder="Type: its not working"><br />
+
+	<hr>
+	<p>ng-class-even and ng-class-odd</p>
+	<ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
+	  <li ng-repeat="name in names">
+	   <span ng-class-odd="'odd'" ng-class-even="'even'">
+	     {{name}} &nbsp; &nbsp; &nbsp;
+	   </span>
+	  </li>
+	</ol>
+
+	<hr>
+	<p>ng-copy</p>
+	<input ng-copy = "copied=true" ng-init = "copied=false;copy='copy me'" ng-model="copy">
+	copied:{{copied}}
+	<hr>
+	<p>ng-cut</p>
+	<input ng-cut="cut=true" ng-init="cut=false; value='cut me'" ng-model="value">
+	cut: {{cut}}
+	<hr />
+  	<p>ng-paste</p>
+ 	<input ng-paste="paste=true" ng-init="paste=false" placeholder='paste here'>
+	pasted: {{paste}}
+	<hr>
+	<p>ng-disabled</p>
+	Click me to toggle: <input type="checkbox" ng-model="checked"><br/>
+	<p>{{checked}}</p>
+	<button ng-model="button" ng-disabled="checked" >Button</button>
+	<hr>
+	<p>ng-href</p>
+	<!-- If you remove following line then see what happen-->
+	
+	<a href="{{link}}">link1</a>
+	<hr>
+	<p>ng-list</p>
+	List<input ng-model="names" ng-list=":" >
+	<tt>Names : {{ names }}</tt>
+
+	<hr>
+	<p>ng-model-options</p>
+	<form name="userForm">
+    Name:
+    <input type="text" name="userName"
+           ng-model="user.name"
+           ng-model-options="{ debounce: 1000 }" />
+    <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
+  	</form>
+  	<pre>user.name = <span ng-bind="user.name"></span></pre>
+  
+  	<hr />
+  	<p>ng-non-bindable</p>
+  	<div>Normal: {{1 + 2}}</div>
+  	<div ng-non-bindable>Ignored: {{1 + 2}}</div>
+  	<hr />
+  	<p>ng-readonly</p>
+  	Check me to make text readonly: <input type="checkbox" ng-model="checked"><br/>
+	<input type="text" ng-readonly="checked" value="I'm Angular"/>
+
+	<hr />
+  	<p>ng-readonly</p>
+	Check me to select: <input type="checkbox" ng-model="selected"><br/>
+	<select>
+  		<option>Hello!</option>
+  		<option ng-selected="selected">Greetings!</option>
+	</select>
+
+	<hr />
+	<p>ng-src</p>
+	Enter path:<input type="text" ng-model="imgSrc" placeholder="Enter img/smile.jpg">
+	<img ng-src="{{imgSrc}}">
+
+	<hr />
+	<p>ng-style</p>
+	<input type="button" value="set color" ng-click="myStyle={color:'red'}">
+	<input type="button" value="set background" ng-click="myStyle={'background-color':'blue'}">
+	<input type="button" value="clear" ng-click="myStyle={}">
+	<span ng-style="myStyle">Sample Text</span>
+	<pre>myStyle={{myStyle}}</pre>
+
+	<hr />
+	<!--controller is written for it (check in controller js file)--> 
+	<p>ng-submit</p>
+	<form ng-submit="submitData()">
+  		Enter text and hit enter:
+  		<input type="text" ng-model="text" />
+  		<input type="submit" id="submit" value="Add" />
+  		<pre>list={{list}}</pre>
+	</form>
+	
+	<hr />
+	<p  ng-init="items=['mainDiv' ,'subDiv']">ng-switch</p>
+
+	<select ng-model="selection" ng-init='selection=items[0]' ng-options="var for var in items"></select>
+	<div ng-switch on="selection">
+      <div ng-switch-when="mainDiv">main Div is selected</div>
+      <div ng-switch-when="subDiv">Sub div</div>
+      <div ng-switch-default>default</div>
+    </div>
+
+	<hr>
+	<p>currency</p>
+	<input type="number" ng-init='amount=123' ng-model="amount"> <br>
+ 	default currency symbol ($): <span id="currency-default">{{amount | currency}}</span><br>
+ 	custom currency identifier (IndianR): <span>{{amount | currency:"R"}}</span>
+ 	<hr>
+ 	<p>Date</p>
+ 	<span>{{111211312131 | date:'yyyy'}}</span>
+ 	
+ 	<hr>
+ 	<p>filter</p>
+ 	Search:<input type="text" data-ng-model="strName" /> 
+
+ 	<li ng-repeat="name in names|filter:strName ">
+	   <span ng-class-odd="'odd'" ng-class-even="'even'">
+	     {{name}} &nbsp; &nbsp; &nbsp;
+	   </span>
+	 </li>
+
+	<hr>
+ 	<p>json</p>
+ 	<pre>{{ names| json }}</pre>
+
+
+ 	<hr>
+ 	<p>limitTo</p>
+ 	Limit {{names}} to: <input type="integer" ng-model="numLimit">
+  	<p>Output numbers: {{ names | limitTo:numLimit }}</p>
+	Limit {{'Hello' | lowercase}} to: <input type="integer" ng-model="strLimit">
+ 	<p>Output letters: {{ 'hello' | limitTo:strLimit	}}</p>
+
+ 	<hr />
+ 	<p>lowercase</p>
+ 	Lowercase of HELLO is {{'HELLo' | lowercase}}
+
+ 	<hr />
+ 	<p>uppercase</p>
+ 	Uppercase of hello is {{'hello' | uppercase}}
+
+ 	<p> Location is {{ link }}</p>
+	

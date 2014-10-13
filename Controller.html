@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+	<title>Angular Assignment </title>
+	<script src="app/bower_components/angular/angular.js"></script>
+
+</head>
+<!--< body data-ng-init = "arrNames = ['Dave' , 'pqr' , 'lmn' , 'opl']" >-->
+<body>
+<div ng-controller = "SimpleController">
+	Name:
+
+	<input type="text" data-ng-model="name" /> 
+		<h3> Looping with ng-repeat directives</h3>
+		<ul>
+			<li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{cust.name | uppercase}} - {{cust.city | lowercase}}</li>
+		</ul>
+</div>	
+	<script>
+			var objMyApp = angular.module('myApp',[]);
+			var controllers = {};
+			controllers.SimpleController = function ($scope){
+				$scope.customers=[
+					{name:'Jhon Smith',city:'India'},
+					{name:'Jhon Joe',city:'Us'},
+					{name:'Mark Joe',city:'USA'}
+				];
+
+			}
+		
+			objMyApp.controller(controllers);
+			/*
+			var objMyApp = angular.module('myApp',[]);
+			
+			objMyApp.controller('SimpleController', function ($scope){
+				$scope.customers=[
+					{name:'Jhon Smith',city:'India'},
+					{name:'Jhon Joe',city:'Us'},
+					{name:'Mark Joe',city:'USA'}
+				];
+
+			});
+			var objMyApp = angular.module('myApp',[]);
+			function SimpleController($scope){
+				$scope.customers=[
+					{name:'Jhon Smith',city:'India'},
+					{name:'Jhon Joe',city:'Us'},
+					{name:'Mark Joe',city:'USA'}
+				];
+
+			}
+			objMyApp.controller('SimpleController', SimpleController);*/
+	</script>	
+</body>
+</html>
